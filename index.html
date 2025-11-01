@@ -6,17 +6,189 @@
   <title>TJNAstro Centre</title>
   <meta name="description" content="TJNAstro Centre provides astrology solutions for personal and professional life challenges with 10 years of experience." />
   <style>
-    :root{--accent:#f59e0b}
-    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans','Liberation Sans',sans-serif;background:linear-gradient(180deg,#071029 0%, #0b1220 60%);color:#fff;margin:0;padding:0;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center}
-    .container{max-width:800px;padding:20px}
-    h1{font-size:32px;margin-bottom:16px;color:var(--accent)}
-    p{font-size:18px;line-height:1.6;color:#e6eef8}
+    :root{--bg:#071029;--card:#0b1220;--muted:#cbd5e1;--accent:#f59e0b}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg) 0%, #0b1220 60%);color:#fff;min-height:100vh}
+
+    /* layout */
+    .app{max-width:1100px;margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .site-title{font-weight:700}
+    nav{display:flex;gap:10px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
+    nav a.active{background:rgba(255,255,255,0.04);color:#fff}
+
+    /* two-column home layout */
+    .panel{display:grid;grid-template-columns:1fr 360px;gap:20px;margin-top:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:18px;border-radius:12px}
+
+    /* page containers (only active page visible) */
+    .pages > section{display:none;animation:fades 240ms ease both}
+    .pages > section.active{display:block}
+
+    @keyframes fades{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+    /* About & contact simple styling */
+    h1,h2{color:var(--accent);margin:0 0 8px 0}
+    p.lead{margin:0;color:var(--muted)}
+
+    /* contact form */
+    .contact-form input,.contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:8px}
+    .btn{background:var(--accent);color:#08121a;border:none;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer}
+
+    /* services grid */
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .service{padding:12px;border-radius:10px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+
+    /* responsive */
+    @media (max-width:980px){.panel{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr}.logo{width:48px;height:48px}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Welcome to TJNAstro Centre</h1>
-    <p>TJNAstro Centre gives you solutions for all astrology related problems in personal and professional life. We have 10 years of experience in the field.</p>
+<header class="flex items-center space-x-4 p-4 bg-white shadow-md rounded-2xl mb-6">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAYAAAA+jFvT...SNIP..." alt="Thiruvalluvar Logo" class="w-14 h-14 rounded-full" />
+  <h1 class="text-2xl font-bold">My Website Title</h1>
+</header>
+  <!-- Top Logo + Title -->
+  <div style="text-align:center;margin-top:18px">
+    <img src="thiruvalluvar.jpg" alt="TJNAstro Logo" style="width:80px;height:80px;border-radius:10px;object-fit:cover;background:#f59e0b" />
+    <h1 style="margin:6px 0 0 0;color:#f59e0b;font-size:26px">TJNAstro Centre</h1>
   </div>
+  <div class="app">
+    <header style="margin-top:8px">
+      <div class="brand">
+        <div class="logo">TJ</div>
+        <div>
+          <div class="site-title">TJNAstro Centre</div>
+          <div style="font-size:13px;color:var(--muted)">Trusted astrological guidance — 10 years</div>
+        </div>
+      </div>
+
+      <nav id="mainNav">
+        <a href="#home" data-page="home" class="active">Home</a>
+        <a href="#about" data-page="about">About</a>
+        <a href="#services" data-page="services">Services</a>
+        <a href="#contact" data-page="contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="pages">
+      <!-- HOME -->
+      <section id="home" class="active">
+        <div class="panel">
+          <div class="card">
+            <h1>Welcome to TJNAstro Centre</h1>
+            <p class="lead">TJNAstro Centre gives you solutions for all astrology related problems in personal and professional life. We have 10 years of experience in the field.</p>
+
+            <div style="margin-top:16px" class="services-grid">
+              <div class="service"><strong>Natal Chart Review</strong><p style="margin:6px 0 0 0;color:var(--muted)">Understand your personality, strengths and timing.</p></div>
+              <div class="service"><strong>Compatibility Report</strong><p style="margin:6px 0 0 0;color:var(--muted)">Insight into relationships and long-term fit.</p></div>
+              <div class="service"><strong>Career & Timing</strong><p style="margin:6px 0 0 0;color:var(--muted)">Transit-based advice for career moves.</p></div>
+              <div class="service"><strong>Remedies</strong><p style="margin:6px 0 0 0;color:var(--muted)">Practical, safe remedies where appropriate.</p></div>
+            </div>
+
+            <div style="margin-top:18px;display:flex;gap:10px">
+              <button class="btn" onclick="navigate('services')">Book a reading</button>
+              <button class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)" onclick="navigate('contact')">Contact us</button>
+            </div>
+          </div>
+
+          <aside style="width:320px">
+            <div class="card">
+              <strong>Quick Contact</strong>
+              <p style="margin:8px 0 0 0;color:var(--muted)">Phone: +91‑XXXXXXXXXX<br/>Email: info@tjnastro.example</p>
+              <div style="margin-top:12px;display:flex;gap:8px">
+                <a href="https://wa.me/91999" class="btn" style="text-decoration:none;display:inline-block">WhatsApp</a>
+                <a href="#contact" onclick="navigate('contact')" style="padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);color:var(--muted);text-decoration:none">Message</a>
+              </div>
+            </div>
+
+            <div class="card" style="margin-top:12px">
+              <strong>Daily Tip</strong>
+              <p style="margin:8px 0 0 0;color:var(--muted)">When Mercury is retrograde, avoid signing important contracts; review instead.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="card">
+          <h2>About TJNAstro Centre</h2>
+          <p style="color:var(--muted)">We combine traditional astrological techniques with practical advice. Our practitioners have a decade of experience in offering clear, respectful guidance for relationships, career, finance and personal wellbeing.</p>
+
+          <h3 style="margin-top:18px">Our Approach</h3>
+          <p style="color:var(--muted)">Each reading focuses on clarity and usable steps — timings, short-term actions and long-term perspective tailored to your chart.</p>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="card">
+          <h2>Services & Pricing</h2>
+          <div style="margin-top:12px" class="services-grid">
+            <div class="service"><strong>Natal Chart Review</strong><p style="color:var(--muted);margin:6px 0 0 0">₹1,499 — Full natal chart analysis (PDF report)</p></div>
+            <div class="service"><strong>Compatibility Report</strong><p style="color:var(--muted);margin:6px 0 0 0">₹999 — Synastry snapshot</p></div>
+            <div class="service"><strong>Transit Advice</strong><p style="color:var(--muted);margin:6px 0 0 0">₹699 — Focused guidance for upcoming transits</p></div>
+            <div class="service"><strong>Remedies & Rituals</strong><p style="color:var(--muted);margin:6px 0 0 0">Custom suggestions where appropriate</p></div>
+          </div>
+
+          <div style="margin-top:16px">
+            <button class="btn" onclick="navigate('contact')">Book & Pay</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="card">
+          <h2>Contact Us</h2>
+          <p style="color:var(--muted)">We only collect the data you provide. This demo page does not send information anywhere — implement backend to accept messages.</p>
+
+          <form class="contact-form" onsubmit="event.preventDefault();alert('Demo: message captured — replace with real backend')">
+            <input placeholder="Your name" required />
+            <input type="email" placeholder="Email" required />
+            <textarea placeholder="Message" rows="4" required></textarea>
+            <div style="display:flex;gap:10px">
+              <button class="btn" type="submit">Send message</button>
+              <a href="https://wa.me/91999" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);text-decoration:none">WhatsApp</a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="text-align:center;color:var(--muted);margin-top:18px">© <span id="year"></span> TJNAstro Centre</footer>
+  </div>
+
+  <script>
+    // simple navigation: show only the selected page section
+    function navigate(page){
+      const sections = document.querySelectorAll('.pages > section');
+      sections.forEach(s => s.classList.toggle('active', s.id === page));
+      // highlight nav
+      document.querySelectorAll('#mainNav a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+      // update hash without jump
+      history.replaceState(null,'', '#' + page);
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // wire links (in case user clicks nav anchors)
+    document.querySelectorAll('#mainNav a').forEach(a => {
+      a.addEventListener('click', (e)=>{e.preventDefault();navigate(a.dataset.page)});
+    });
+
+    // initial page from hash
+    (function(){
+      const initial = (location.hash || '#home').replace('#','');
+      navigate(initial);
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
